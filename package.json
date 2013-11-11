@@ -1,0 +1,15 @@
+{
+  "name": "amvc-validation",
+  "version": "0.0.0",
+  "description": "Pre-route request validation for express",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap ./test"
+  },
+  "author": "Blair McKenzie <shib71@gmail.com>",
+  "license": "BSD",
+  "dependencies" : {
+  	"q" : "*",
+    "escape-html" : "*"
+  }
+}
