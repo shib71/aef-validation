@@ -1,5 +1,5 @@
 {
-  "name": "amvc-validation",
+  "name": "aef-validation",
   "version": "0.0.0",
   "description": "Pre-route request validation for express",
   "main": "index.js",
@@ -11,5 +11,8 @@
   "dependencies" : {
   	"q" : "*",
     "escape-html" : "*"
+  },
+  "devDependencis" : {
+    "tap" : "*"
   }
 }
