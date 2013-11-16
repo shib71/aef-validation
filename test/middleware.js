@@ -21,13 +21,9 @@ test("middleware",function(t){
 		t.ok(util.isArray(reqA.validation.invalid),"validation object contains 'invalid' array");
 		t.equal(reqA.validation.invalid.length,0,"'invalid' array is empty");
 		t.notEqual(reqA.validation.abc,undefined,"'abc' value defined");
-		reqA.validation.abc.then(function(val){
-			t.equal(val,123,"'abc' value correct");
-		}).done();
+		t.equal(reqA.validation.abc,123,"'abc' value correct");
 		t.notEqual(reqA.validation.def,undefined,"'def' value defined");
-		reqA.validation.def.then(function(val){
-			t.equal(val,"&lt;b&gt;hi&lt;/b&gt;","'def' value correct");
-		}).done();
+		t.equal(reqA.validation.def,"&lt;b&gt;hi&lt;/b&gt;","'def' value correct");
 	});
 	
 	/* simple middleware - invalid */
@@ -43,13 +39,9 @@ test("middleware",function(t){
 		t.ok(reqB.validation.invalid.indexOf("abc")>-1,"'invalid' array includes 'abc'");
 		t.ok(reqB.validation.invalid.indexOf("def")>-1,"'invalid' array includes 'def'");
 		t.notEqual(reqB.validation.abc,undefined,"'abc' value defined");
-		reqB.validation.abc.catch(function(err){
-			t.equal(err.message,"Required field","'abc' value shown invalid");
-		}).done();
+		t.equal(reqB.validation.abc.message,"Required field","'abc' value shown invalid");
 		t.notEqual(reqB.validation.def,undefined,"'def' value defined");
-		reqB.validation.def.catch(function(err){
-			t.equal(err.message,"Doesn't match","'def' value shown invalid");
-		}).done();
+		t.equal(reqB.validation.def.message,"Doesn't match","'def' value shown invalid");
 	});
 	
 	/* complex middleware - valid */
@@ -69,13 +61,9 @@ test("middleware",function(t){
 		t.ok(util.isArray(reqC.validation.invalid),"validation object contains 'invalid' array");
 		t.equal(reqC.validation.invalid.length,0,"'invalid' array is empty");
 		t.notEqual(reqC.validation.abc,undefined,"'abc' value defined");
-		reqC.validation.abc.then(function(val){
-			t.equal(val,123,"'abc' value correct");
-		}).done();
+		t.equal(reqC.validation.abc,123,"'abc' value correct");
 		t.notEqual(reqC.validation.def,undefined,"'def' value defined");
-		reqC.validation.def.then(function(val){
-			t.equal(val,"&lt;b&gt;hi&lt;/b&gt;","'def' value correct");
-		}).done();
+		t.equal(reqC.validation.def,"&lt;b&gt;hi&lt;/b&gt;","'def' value correct");
 	});
 	
 	/* complex middleware - invalid */
@@ -95,12 +83,8 @@ test("middleware",function(t){
 		t.ok(reqD.validation.invalid.indexOf("abc")>-1,"'invalid' array includes 'abc'");
 		t.ok(reqD.validation.invalid.indexOf("def")>-1,"'invalid' array includes 'def'");
 		t.notEqual(reqD.validation.abc,undefined,"'abc' value defined");
-		reqD.validation.abc.catch(function(err){
-			t.equal(err.message,"Required field","'abc' value shown invalid");
-		}).done();
+		t.equal(reqD.validation.abc.message,"Required field","'abc' value shown invalid");
 		t.notEqual(reqD.validation.def,undefined,"'def' value defined");
-		reqD.validation.def.catch(function(err){
-			t.equal(err.message,"Depends on missing or invalid information");
-		}).done();
+		t.equal(reqD.validation.def.message,"Depends on missing or invalid information");
 	});
 });
